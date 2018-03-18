@@ -229,6 +229,7 @@ font-family: 'Gruppo', cursive;
             <li id ="cipdrop"><a href="#">Ciprofloxacin</a></li>
             <li id ="nitdrop"><a href="#">Nitrofurantoin</a></li>
             <li id ="ampdrop"><a href="#">Ampicillin</a></li>
+            <li id ="ampsdrop"><a href="#">Ampicillin/Sulbactam</a></li>
             <li id ="levdrop"> <a href="#">Levofloxacin</a></li>
           </ul>
         </div>
@@ -354,6 +355,32 @@ var amp09colors = '#layer {' +
         'polygon-fill: #EDC1DB;' +
       '}' +
       '#layer [amp09 <= 59] {' +
+        'polygon-fill: #CF3D96;' +
+      '}';
+
+
+var amps09colors = '#layer {' +
+        'polygon-fill: #CCCCCC;' +
+        'polygon-opacity: 0.9;' +
+        '::outline {' +
+        'line-color: #FFFFFF;' +
+        'line-width: 1;' +
+        'line-opacity: 0.5;' +
+        '}' +
+      '}' +
+      '#layer [amps09 <= 100] {' +
+        'polygon-fill: #50B848;' +
+      '}' +
+      '#layer [amps09 <= 89] {' +
+        'polygon-fill: #BCDDA1;' +
+      '}' +
+      '#layer [amps09 <= 79] {' +
+        'polygon-fill: #F4E6ED;' +
+      '}' +
+      '#layer [amps09 <= 69] {' +
+        'polygon-fill: #EDC1DB;' +
+      '}' +
+      '#layer [amps09 <= 59] {' +
         'polygon-fill: #CF3D96;' +
       '}';
 
@@ -513,6 +540,33 @@ var amp13colors = '#layer {' +
       '}';
 
 
+var amps13colors = '#layer {' +
+        'polygon-fill: #CCCCCC;' +
+        'polygon-opacity: 0.9;' +
+        '::outline {' +
+        'line-color: #FFFFFF;' +
+        'line-width: 1;' +
+        'line-opacity: 0.5;' +
+        '}' +
+      '}' +
+      '#layer [amps13 <= 100] {' +
+        'polygon-fill: #50B848;' +
+      '}' +
+      '#layer [amps13 <= 89] {' +
+        'polygon-fill: #BCDDA1;' +
+      '}' +
+      '#layer [amps13 <= 79] {' +
+        'polygon-fill: #F4E6ED;' +
+      '}' +
+      '#layer [amps13 <= 69] {' +
+        'polygon-fill: #EDC1DB;' +
+      '}' +
+      '#layer [amps13 <= 59] {' +
+        'polygon-fill: #CF3D96;' +
+      '}';
+
+
+
 var amx13colors = '#layer {' +
         'polygon-fill: #CCCCCC;' +
         'polygon-opacity: 0.9;' +
@@ -662,6 +716,31 @@ var amp15colors = '#layer {' +
         'polygon-fill: #EDC1DB;' +
       '}' +
       '#layer [amp15 <= 59] {' +
+        'polygon-fill: #CF3D96;' +
+      '}';
+
+var amps15colors = '#layer {' +
+        'polygon-fill: #CCCCCC;' +
+        'polygon-opacity: 0.9;' +
+        '::outline {' +
+        'line-color: #FFFFFF;' +
+        'line-width: 1;' +
+        'line-opacity: 0.5;' +
+        '}' +
+      '}' +
+      '#layer [amps15 <= 100] {' +
+        'polygon-fill: #50B848;' +
+      '}' +
+      '#layer [amps15 <= 89] {' +
+        'polygon-fill: #BCDDA1;' +
+      '}' +
+      '#layer [amps15 <= 79] {' +
+        'polygon-fill: #F4E6ED;' +
+      '}' +
+      '#layer [amps15 <= 69] {' +
+        'polygon-fill: #EDC1DB;' +
+      '}' +
+      '#layer [amps15 <= 59] {' +
         'polygon-fill: #CF3D96;' +
       '}';
 
@@ -823,6 +902,10 @@ var hospIcon = L.icon({
     var amp13Layer = "";
     var amp15Layer = "";
 
+    var amps09Layer = "";
+    var amps13Layer = "";
+    var amps15Layer = "";
+
     var cip09;
     var nit09;
     var tri13 = "";
@@ -870,6 +953,14 @@ var hospIcon = L.icon({
     // console.log(currentDrug + " was clicked");
     e.preventDefault();
     });
+
+    $("#ampsdrop").click(function(e){
+    currentDrug = "Ampicillin-Sulbactam";
+    showAmps();
+    // console.log(currentDrug + " was clicked");
+    e.preventDefault();
+    });
+
 
 
     $("#amxdrop").click(function(e){
@@ -937,6 +1028,9 @@ if (currentDrug === "Nitrofurantoin") {
 } else if (currentDrug === "Ampicillin") {
     // console.log(currentDrug + " was called");
     showAmp();
+} else if (currentDrug === "Ampicillin-Sulbactam") {
+    // console.log(currentDrug + " was called");
+    showAmps();
 } else {
   console.log("Error selecting drug")
 }
@@ -1006,20 +1100,37 @@ function removePrevious() {
     amp09Layer.getSubLayer(0).hide();
     amp09Layer = "";
     map.closePopup();
-
     console.log("hid amp09Layer");
 } if (amp13Layer != "") {
     amp13Layer.getSubLayer(0).hide();
     amp13Layer = "";
     map.closePopup();
-
     console.log("hid amp13Layer");
+
 } if (amp15Layer != "") {
     amp15Layer.getSubLayer(0).hide();
     amp15Layer = "";
     map.closePopup();
-
     console.log("hid amp15Layer");
+
+} if (amps09Layer != "") {
+    amps09Layer.getSubLayer(0).hide();
+    amps09Layer = "";
+    map.closePopup();
+    console.log("hid amps09Layer");
+
+} if (amps13Layer != "") {
+    amps13Layer.getSubLayer(0).hide();
+    amps13Layer = "";
+    map.closePopup();
+    console.log("hid amps13Layer");
+
+} if (amps15Layer != "") {
+    amps15Layer.getSubLayer(0).hide();
+    amps15Layer = "";
+    map.closePopup();
+    console.log("hid amps15Layer");
+
 } if (nit09Layer != "") {
     nit09Layer.getSubLayer(0).hide();
     nit09Layer = "";
@@ -1243,6 +1354,101 @@ else if (currentYear === 2015) {
     console.log("error");
 }
 };
+
+
+
+
+function showAmps() {
+
+if (currentYear === 2009) {
+    currentMap = "amps09";
+    // console.log(currentMap);
+    // console.log("Ampicillin 2009 function called");
+    removePrevious();
+    var currentDrug = "Ampicillin-Sulbactam";
+    var amps09 = cartodb.createLayer(map, {
+    user_name: username,
+    type: 'cartodb',
+    sublayers: [{
+      sql: 'SELECT * FROM amrviz',
+      cartocss: amps09colors,
+      interactivity: ['cartodb_id', 'amps09'],
+      layerIndex:1
+    }]
+    },{ https: true })
+    .addTo(map)
+    .done(function(layer) {
+      layer.setInteraction(true);
+      amps09Layer = layer;
+      //layer.bind('featureOver', onPolyOver)
+      //layer.bind('featureOut', onPolyOut)
+      layer.bind('featureClick', onPolyClick)
+      layer.bind('featureClick',function(e, pos, latlng, data) {
+        showFeatureAmps09(data.cartodb_id);
+      });
+    })
+ ;
+} else if (currentYear === 2013) {
+    currentMap = "amps13";
+    // console.log(currentMap);
+    // console.log("Ampicillin 2013 function called");
+    removePrevious();
+    var amps13 = cartodb.createLayer(map, {
+    user_name: username,
+    type: 'cartodb',
+    sublayers: [{
+      sql: 'SELECT * FROM amrviz',
+      cartocss: amps13colors,
+      interactivity: ['cartodb_id', 'amps13'],
+      layerIndex:1
+    }]
+    },{ https: true })
+    .addTo(map)
+    .done(function(layer) {
+      layer.setInteraction(true);
+      //layer.bind('featureOver', onPolyOver)
+      //layer.bind('featureOut', onPolyOut)
+      amps13Layer = layer;
+      layer.bind('featureClick', onPolyClick)
+      layer.bind('featureClick',function(e, pos, latlng, data) {
+        showFeatureAmps13(data.cartodb_id);
+      });
+    })
+
+ ;
+} 
+else if (currentYear === 2015) {
+    currentMap = "amps15";
+    // console.log(currentMap);
+    // console.log("Ampicillin 2015 function called");
+    removePrevious();
+    var amps15 = cartodb.createLayer(map, {
+    user_name: username,
+    type: 'cartodb',
+    sublayers: [{
+      sql: 'SELECT * FROM amrviz',
+      cartocss: amps15colors,
+      interactivity: ['cartodb_id', 'amps15'],
+      layerIndex:1
+    }]
+    },{ https: true })
+    .addTo(map)
+    .done(function(layer) {
+      layer.setInteraction(true);
+      //layer.bind('featureOver', onPolyOver)
+      //layer.bind('featureOut', onPolyOut)
+      amps15Layer = layer;
+      layer.bind('featureClick', onPolyClick)
+      layer.bind('featureClick',function(e, pos, latlng, data) {
+        showFeatureAmps15(data.cartodb_id);
+      });
+    })
+    ;
+} else {
+    console.log("error");
+}
+};
+
 
 function showAmp() {
 
@@ -1711,6 +1917,35 @@ if (geojson.features["0"].properties.amp09) {
     });
   }
 
+
+  function showFeatureAmps09(cartodb_id) {
+    sql2.execute("SELECT * from amrviz WHERE cartodb_id = {{cartodb_id}}", {cartodb_id: cartodb_id} 
+  ).done(function(geojson) {
+      if (polygon) {
+        map.removeLayer(polygon);
+      }
+// set initial value for popupText
+var popupText = "<b>" + geojson.features["0"].properties.name + " County " + "</b></br>" + "No Data"
+// if this feature contains a value (i.e., isn't null), then change the value of popupText
+if (geojson.features["0"].properties.amps09) {
+    popupText = "<b>" + geojson.features["0"].properties.name + " County </b> </br>" +  geojson.features["0"].properties.amps09 + "% Susceptibility "
+};
+
+      polygon = L.geoJson(geojson, { 
+        style: {
+        color: "#000",
+        fillColor: "#fff",
+        fillOpacity: 0.0,
+        weight: 2,
+        opacity: 0.65
+        }
+      }).addTo(map).bindPopup(popupText).openPopup();
+      // //prints just the value I click
+      // console.log(geojson.features["0"].properties.amp09);
+    });
+  }
+
+
   // AMOXICILLIN 2009 TOOLTIP
 function showFeatureAmx09(cartodb_id) {
     sql2.execute("SELECT * from amrviz WHERE cartodb_id = {{cartodb_id}}", {cartodb_id: cartodb_id} 
@@ -1877,6 +2112,33 @@ if (geojson.features["0"].properties.amp13) {
     });
   }
 
+  function showFeatureAmps13(cartodb_id) {
+    sql2.execute("SELECT * from amrviz WHERE cartodb_id = {{cartodb_id}}", {cartodb_id: cartodb_id} 
+  ).done(function(geojson) {
+      if (polygon) {
+        map.removeLayer(polygon);
+      }
+// set initial value for popupText
+var popupText = "<b>" + geojson.features["0"].properties.name + " County " + "</b></br>" + "No Data"
+// if this feature contains a value (i.e., isn't null), then change the value of popupText
+if (geojson.features["0"].properties.amps13) {
+    popupText = "<b>" + geojson.features["0"].properties.name + " County </b> </br>" +  geojson.features["0"].properties.amps13 + "% Susceptibility "
+};
+      polygon = L.geoJson(geojson, { 
+        style: {
+        color: "#000",
+        fillColor: "#fff",
+        fillOpacity: 0.0,
+        weight: 2,
+        opacity: 0.65
+        }
+      }).addTo(map).bindPopup(popupText).openPopup();
+      // //prints just the value I click
+      // console.log(geojson.features["0"].properties.amp09);
+    });
+  }
+
+
 
   // AMOXICILLIN 2013 TOOLTIP
 function showFeatureAmx13(cartodb_id) {
@@ -2041,6 +2303,34 @@ if (geojson.features["0"].properties.amp15) {
       // console.log(geojson.features["0"].properties.amp09);
     });
   }
+
+  // AMPICILLIN 2015 TOOLTIP
+function showFeatureAmps15(cartodb_id) {
+    sql2.execute("SELECT * from amrviz WHERE cartodb_id = {{cartodb_id}}", {cartodb_id: cartodb_id} 
+  ).done(function(geojson) {
+      if (polygon) {
+        map.removeLayer(polygon);
+      }
+// set initial value for popupText
+var popupText = "<b>" + geojson.features["0"].properties.name + " County " + "</b></br>" + "No Data"
+// if this feature contains a value (i.e., isn't null), then change the value of popupText
+if (geojson.features["0"].properties.amps15) {
+    popupText = "<b>" + geojson.features["0"].properties.name + " County </b> </br>" +  geojson.features["0"].properties.amps15 + "% Susceptibility "
+};
+      polygon = L.geoJson(geojson, { 
+        style: {
+        color: "#000",
+        fillColor: "#fff",
+        fillOpacity: 0.0,
+        weight: 2,
+        opacity: 0.65
+        }
+      }).addTo(map).bindPopup(popupText).openPopup();
+      // //prints just the value I click
+      // console.log(geojson.features["0"].properties.amp09);
+    });
+  }
+
 
   // AMOXICILLIN 2015 TOOLTIP
 function showFeatureAmx15(cartodb_id) {
