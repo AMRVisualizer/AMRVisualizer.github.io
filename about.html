@@ -1,0 +1,226 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./wifavi.jpg">
+
+    <title>AMR Visualizer</title>
+
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <link rel="icon" type="image/png" href="./wifavi.jpg">
+  </head>
+
+    <style>
+html, body, #container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  padding-top: 50px;
+}
+
+#map {
+  width: auto;
+  height: 100%;   
+font-family: 'Carrois Gothic SC', sans-serif;
+}
+
+
+.list-group-item:hover {
+    background: steelblue;
+    color: #fff;
+    cursor: pointer;
+
+}
+
+/* basic positioning */
+.legend { 
+    list-style: none; 
+    width: 200px;
+    height: 400px;
+    left: -100px;
+}
+
+.legend li { 
+    float: left; 
+    margin-right: 0px; 
+    width: 200px;
+    margin-left: -35px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.legend ul { 
+
+}
+
+.legend span { 
+    border-radius: 3px;
+    border: none;
+    float: left; 
+    width: 25px; 
+    height: 25px; 
+    margin: 3px; 
+    align-items: vertical;
+    font-family: 'Carrois Gothic SC', sans-serif;
+}
+
+
+/* LEGEND COLORS */
+.legend .a { 
+  background-color: #50B848; 
+}
+.legend .b { 
+  background-color: #BCDDA1; 
+}
+.legend .c { 
+  background-color: #F4E6ED; 
+}
+.legend .d { 
+  background-color: #EDC1DB; 
+}
+.legend .e { 
+  background-color: #CF3D96; 
+}
+.legend .f { 
+  background-color: #CCCCCC; 
+}
+
+.col-md-2 {
+  background: #0A0A0A;
+}
+
+p {
+  color: grey;    
+  font-family: 'Carrois Gothic SC', sans-serif;
+}
+
+li {
+  color: grey;
+  font-size: 9pt;    
+  font-family: 'Nunito', sans-serif;
+
+}
+
+.hey {
+  background-color: white;
+  font-family: 'Nunito', sans-serif;
+}
+
+.hey:hover {
+  background-color: #e9e9e9;
+  font-family: 'Nunito', sans-serif;
+}
+
+.navbar-brand {
+  font-family: 'Nunito', sans-serif;
+  color: black;
+
+}
+
+.navbar-brand:hover { 
+    background-color: #e9e9e9;
+    color: black;
+}
+
+.active {
+    background-color: #e9e9e9;
+    color: black;
+}
+
+a {
+  font-family: 'Nunito', sans-serif;
+  color: black;
+}
+
+a:hover {
+    background-color: #e9e9e9;
+    color: black;
+}
+
+.navbar-left {
+float:left;
+margin: 10px;
+}
+
+/*font-family: 'Adamina', serif;
+font-family: 'Nunito', sans-serif;
+font-family: 'Arimo', sans-serif;
+font-family: 'Cabin', sans-serif;
+font-family: 'Josefin Sans', sans-serif;
+font-family: 'Baloo Bhai', cursive;
+font-family: 'Duru Sans', sans-serif;
+font-family: 'Carrois Gothic SC', sans-serif;
+font-family: 'Gruppo', cursive;
+
+*/
+/*// Colors:
+// #50B848
+// #BCDDA1
+// #F4E6ED
+// #EDC1DB
+// #CF3D96
+*/
+
+  </style>
+
+  <body>
+
+
+    <nav class="navbar navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="button navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="#" class="navbar-left"><img src="AMR-icon.png"></a>
+          <a class="navbar-brand" href="#">E. Coli Antimicrobial Resistance Visualizer</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="./index.html">Map</a></li>
+            <li class="active"><a href="./about.html">About</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div> <!-- end container -->
+    </nav> <!-- end navbar-->
+</div>
+
+<div class="container">
+<!--       <div id = "info">
+ -->
+      <h4 id="warning">March 2018 Version: In Progress</h4> 
+
+<!--       <h4>Context of the Project</h4> 
+        Laurel Legenza, Comparative Health Systems Global Pharmacy Fellow, is leading this project under the mentorship of Warren Rose and Susanne Barnett, associate professors (CHS) in the Pharmacy Practice Division at the UW-Madison School of Pharmacy. This interactive visualization was created by Natalee Desotell with guidance from Professor Robert Roth, as a capstone project for the UW-Madison GIS Certificate Program. The data were provided by Erik Munson, Ph.D., D(ABMM).
+        </br>
+        </br>
+      <h4>The Data</h4> 
+        This map is based on 2015 <i>E. Coli</i> data. The data were averaged within Wisconsin's Emergency Response Zone level (7 regions), but we have chosen to display it by county so that counties can be easily identified. 
+      </div> -->
+  </div> 
+
+</script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.0/mustache.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script>
+
+
+    </script>
+  </body>
+</html>
