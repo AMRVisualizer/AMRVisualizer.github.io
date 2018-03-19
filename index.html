@@ -210,9 +210,9 @@ font-family: 'Gruppo', cursive;
         <button class="btn btn-dark dropdown-toggle hey" type="button" data-toggle="dropdown">2015
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
-          <li id = "2009drop"><a href="#">2009</a></li>
-          <li id = "2013drop"><a href="#">2013</a></li>
-          <li id = "2015drop"><a href="#">2015</a></li>
+          <li id = "2009drop" class="selection-class"><a href="#">2009</a></li>
+          <li id = "2013drop" class="selection-class"><a href="#">2013</a></li>
+          <li id = "2015drop" class="selection-class"><a href="#">2015</a></li>
         </ul>
       </div>
       <!-- end year dropdown -->
@@ -225,13 +225,13 @@ font-family: 'Gruppo', cursive;
           <button class="btn btn-dark dropdown-toggle hey" type="button" data-toggle="dropdown">Ciprofloxacin
           <span class="caret"></span></button>
           <ul class="dropdown-menu">
-            <li id ="amxdrop"><a href="#">Amoxicillin</a></li>
-            <li id ="tridrop"> <a href="#">Trimethroprim</a></li>
-            <li id ="cipdrop"><a href="#">Ciprofloxacin</a></li>
-            <li id ="nitdrop"><a href="#">Nitrofurantoin</a></li>
-            <li id ="ampdrop"><a href="#">Ampicillin</a></li>
-            <li id ="ampsdrop"><a href="#">Ampicillin/Sulbactam</a></li>
-            <li id ="levdrop"> <a href="#">Levofloxacin</a></li>
+            <li id ="amxdrop" class="selection-class"><a href="#">Amoxicillin</a></li>
+            <li id ="tridrop" class="selection-class"> <a href="#">Trimethroprim</a></li>
+            <li id ="cipdrop" class="selection-class"><a href="#">Ciprofloxacin</a></li>
+            <li id ="nitdrop" class="selection-class"><a href="#">Nitrofurantoin</a></li>
+            <li id ="ampdrop" class="selection-class"><a href="#">Ampicillin</a></li>
+            <li id ="ampsdrop" class="selection-class"><a href="#">Ampicillin/Sulbactam</a></li>
+            <li id ="levdrop" class="selection-class"> <a href="#">Levofloxacin</a></li>
           </ul>
         </div>
         <!-- end drug dropdown-->
@@ -1039,6 +1039,15 @@ var cityIcon = L.icon({
     });
 
 
+
+$(".selection-class").click(function(e){ // CS: I assigned a "selection-class" to each of the dropdown buttons (in their HTML, above) so that they each will trigger this function when clicked 
+  resetSelections()
+})
+function resetSelections(){
+    if (polygon) {
+        map.removeLayer(polygon); // CS: "polygon" is a layer object that gets assigned the GeoJSON of the selected feature... we should remove it from the map each time the map gets redrawn. 
+    }
+}
 
 
 function showLakes() {
