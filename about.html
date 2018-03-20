@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,15 +10,18 @@
 
     <title>AMR Visualizer</title>
 
-    <link rel="stylesheet" href="./css/cartodb.css" />
-    <link rel="stylesheet" href="./css/leaflet.css">
-
+    <link rel="stylesheet" href="css/cartodb.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-    <link rel="icon" type="image/png" href="./wifavi.jpg">
+    <link rel="icon" type="image/png" href="./AMR-icon-simple.png">
+<!--   <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@0.4.9/dist/leaflet.draw.css" />
+ -->  
+ <link href="https://fonts.googleapis.com/css?family=Carrois+Gothic+SC|Nunito" rel="stylesheet">
+<!--   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" /> -->
+  <link rel="stylesheet" type="text/css" href="css/leaflet.css" />
   </head>
 
-    <style>
+  <style>
 html, body, #container {
   height: 100%;
   width: 100%;
@@ -99,6 +100,7 @@ font-family: 'Carrois Gothic SC', sans-serif;
 
 .col-md-2 {
   background: #0A0A0A;
+  width: 200px;
 }
 
 p {
@@ -154,29 +156,9 @@ float:left;
 margin: 10px;
 }
 
-/*font-family: 'Adamina', serif;
-font-family: 'Nunito', sans-serif;
-font-family: 'Arimo', sans-serif;
-font-family: 'Cabin', sans-serif;
-font-family: 'Josefin Sans', sans-serif;
-font-family: 'Baloo Bhai', cursive;
-font-family: 'Duru Sans', sans-serif;
-font-family: 'Carrois Gothic SC', sans-serif;
-font-family: 'Gruppo', cursive;
-
-*/
-/*// Colors:
-// #50B848
-// #BCDDA1
-// #F4E6ED
-// #EDC1DB
-// #CF3D96
-*/
-
   </style>
 
   <body>
-
 
     <nav class="navbar navbar-fixed-top">
       <div class="container">
@@ -192,14 +174,12 @@ font-family: 'Gruppo', cursive;
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="./index.html">Map</a></li>
-            <li class="active"><a href="./about.html">About</a></li>
+            <li class="active"><a href="./index.html">Map</a></li>
+            <li><a href="./about.html">About</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div> <!-- end container -->
     </nav> <!-- end navbar-->
-</div>
-
 <div class="container">
 <!--       <div id = "info">
  -->
