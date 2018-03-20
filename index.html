@@ -279,7 +279,7 @@ var currentDrug = "Ciprofloxacin";
 
 
 ///////////////////////////////////////////////////////////
-///////////////// COLORS/////// ///////////////////////////
+//////////////////COLORS///////////////////////////////////
 ///////////////////////////////////////////////////////////
 
 // 2009 COLORS // 
@@ -843,6 +843,12 @@ var wilakescolor = '#layer {' +
   $( document ).ready(function() {
 
 
+var southWest = L.latLng(41.428714, -93.343035),
+    northEast = L.latLng(47.900777, -85.535404),
+    bounds = L.latLngBounds(southWest, northEast);
+
+
+
 
 var hospIcon = L.icon({
     iconUrl: 'hospital-icon.png',
@@ -858,21 +864,21 @@ var cityIcon = L.icon({
     popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 });
 
-
-
-
-//   var hospitals = L.layerGroup();
+//   var dataSources = L.layerGroup();
 // // need to create a list of wisconsin hospitals
 
-//   L.marker([43.2, -89.3], {icon: hospIcon}).bindPopup('Hospital XYZ').addTo(hospitals),
-//   L.marker([43.5, -89.5], {icon: hospIcon}).bindPopup('Hospital ABC').addTo(hospitals),
-//   L.marker([44.5, -89.2], {icon: hospIcon}).bindPopup('Hospital 123').addTo(hospitals),
-//   L.marker([43.2, -90.5], {icon: hospIcon}).bindPopup('Hospital 789').addTo(hospitals);
+//   L.marker([45.4013481, -91.8493118], {icon: hospIcon}).bindPopup('Barron County Labs').addTo(dataSources),
+//   L.marker([44.4746819, -87.9923935], {icon: hospIcon}).bindPopup('Brown County').addTo(dataSources),
+//   L.marker([43.2, -90.5], {icon: hospIcon}).bindPopup('Hospital 789').addTo(dataSources);
 
+     
+//data sources: location pin
+//hospitals: plus
+//cities: point
      
   var cities = L.layerGroup();
 
-  L.marker([43.0731, -89.4012], {icon: cityIcon}).bindPopup('Madison').addTo(cities),
+  L.marker([43.0731, -89.4012], {icon: cityIcon}).bindPopup('Madison').addTo(cities);
   L.marker([43.0389, -87.9065], {icon: cityIcon}).bindPopup('Milwaukee').addTo(cities),
   L.marker([44.9591, -89.6301], {icon: cityIcon}).bindPopup('Wausau').addTo(cities),
   L.marker([44.8113, -91.4985], {icon: cityIcon}).bindPopup('Eau Claire').addTo(cities);
@@ -885,9 +891,14 @@ var cityIcon = L.icon({
       zoomControl: false,
       center: [44.8,-90.0],
       zoom: 7,
-      layers: []
+      layers: [],
+      maxBounds: bounds,
+      minZoom: 6,
+      maxZoom: 8
 
     });
+
+
 
   var overlays = {
     // "Hospitals": hospitals,
@@ -949,6 +960,8 @@ var cityIcon = L.icon({
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
     }).addTo(map);
     // drawLegend();
+
+
 
 ///////////////////////////////////////////////////////////
 ///////////////// DROPDOWNS /// ///////////////////////////
@@ -2500,6 +2513,8 @@ if (geojson.features["0"].properties.lev15) {
   }
 
   }); // ends on document ready context 
+
+
 
 
 ///////////////////////////////////////////////////////////
