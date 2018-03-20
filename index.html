@@ -822,16 +822,6 @@ var lev15colors = '#layer {' +
         'polygon-fill: #CF3D96;' +
       '}';
 
-var wilakescolor = '#layer {' +
-        'polygon-fill: #ffffff;' +
-        'polygon-opacity: 1;' +
-        '::outline {' +
-        'line-color: #FFFFFF;' +
-        'line-width: 1;' +
-        'line-opacity: 0.5;' +
-        '}' +
-      '}';
-
 
 // END LAYER COLORS
 
@@ -1105,23 +1095,6 @@ function resetSelections(){
         map.removeLayer(polygon); // CS: "polygon" is a layer object that gets assigned the GeoJSON of the selected feature... we should remove it from the map each time the map gets redrawn. 
     }
 }
-
-
-function showLakes() {
-
-    var wilakes = cartodb.createLayer(map, {
-    user_name: username,
-    type: 'cartodb',
-    sublayers: [{
-      sql: 'SELECT * FROM wilakes',
-      cartocss: wilakescolor,
-      // interactivity: ['cartodb_id', 'amx09'],
-      layerIndex:1
-    }]
-    },{ https: true })
-    .addTo(map)
-    console.log("made it to lakes")
-};    
 
 function selectDrug() {
   // console.log("selectDrug was called");
